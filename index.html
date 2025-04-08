@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Tuning AI</title>
-  <meta name="description" content="Car Tuning powered by AI & Tuning-Profis. Upload deine Datei und wähle Stage 1, DSG, Pop&Bang, DPF OFF uvm. aus.">
-  <meta name="author" content="Onur Cifci">
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Tuning AI – WhatsApp Upload</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
     body {
@@ -20,130 +16,60 @@
       color: #e63946;
       text-shadow: 0 0 6px #e63946, 0 0 10px #e63946;
     }
-    .hover-scale:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-    .accent-red-600:checked {
-      accent-color: #e63946;
-    }
     input:hover, input:focus, input:active, button:hover {
       box-shadow: 0 0 10px rgba(230,57,70,0.8);
       outline: none;
-    }
-    .confirmation {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 50;
-      justify-content: center;
-      align-items: center;
-    }
-    .confirmation.active {
-      display: flex;
     }
   </style>
 </head>
 <body>
 
-<!-- Upload Confirmation Modal -->
-<div id="confirmation" class="confirmation">
-  <div class="bg-[#1f1f1f] text-white p-10 rounded-lg shadow-xl text-center max-w-md animate__animated animate__zoomIn">
-    <h2 class="text-2xl font-bold mb-4">✅ Datei erfolgreich hochgeladen!</h2>
-    <p class="mb-6 text-gray-300">Du erhältst in Kürze eine Bestätigung per E-Mail. Wir bearbeiten deine Datei schnellstmöglich.</p>
-    <button onclick="closeConfirmation()" class="bg-[#e63946] hover:bg-[#b92b37] text-white font-bold py-2 px-6 rounded-full transition">Okay</button>
-  </div>
-</div>
-
-<!-- Hero + Trust -->
-<section class="w-full h-[600px] bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1617531653332-3e529dce2e14?auto=format&fit=crop&w=1600&q=80');">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90 flex items-center justify-center">
-    <div class="text-center px-6">
-      <h2 class="text-6xl md:text-7xl font-extrabold text-white neon-text animate__animated animate__fadeInUp">Maximale Performance</h2>
-      <p class="text-xl md:text-2xl text-gray-300 mt-4 animate__animated animate__fadeInUp animate__delay-1s">Tuning-Profis. AI-Power. Sofort-Service.</p>
-      <a href="#upload" class="mt-8 inline-block bg-[#e63946] hover:bg-[#b92b37] text-white font-bold py-4 px-10 rounded-full shadow-lg hover-scale transition animate__animated animate__fadeInUp animate__delay-2s">Jetzt Datei hochladen</a>
-      <div class="mt-8 flex justify-center space-x-4 animate__animated animate__fadeInUp animate__delay-3s">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/SSL-logo.svg/512px-SSL-logo.svg.png" alt="SSL" class="h-10">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/GDPR_Logo.svg/512px-GDPR_Logo.svg.png" alt="DSGVO" class="h-10">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/TUV_SUD_Logo.svg/512px-TUV_SUD_Logo.svg.png" alt="TÜV" class="h-10">
-      </div>
-    </div>
-  </div>
+<!-- Beschreibung Abschnitt -->
+<section class="bg-black text-white py-20 px-6 text-center">
+  <h2 class="text-4xl font-bold neon-text mb-6">So funktioniert's</h2>
+  <p class="max-w-3xl mx-auto text-lg text-gray-300">Füll das Formular aus und klicke anschließend auf den WhatsApp-Button. Deine Daten werden automatisch übernommen – du brauchst nur noch die Datei anhängen und absenden.</p>
 </section>
 
-<!-- Upload Section -->
-<section id="upload" class="bg-[#0c0c0c] text-white py-20">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-4xl font-bold neon-text text-center mb-10">Fahrzeugdaten & Datei Upload</h2>
-    <form action="https://formsubmit.co/onur.cifci54@hotmail.com" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <input type="text" name="name" placeholder="Dein Name" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="email" name="email" placeholder="E-Mail-Adresse" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="text" name="marke" placeholder="Fahrzeugmarke (z. B. BMW)" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="text" name="modell" placeholder="Modell (z. B. 320d)" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="text" name="baujahr" placeholder="Baujahr" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="text" name="motor" placeholder="Motor (z. B. 2.0 Diesel)" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="text" name="motorkennbuchstabe" placeholder="Motorkennbuchstabe" required class="p-4 rounded bg-gray-800 border border-gray-700">
-      <input type="file" name="datei" required class="col-span-1 md:col-span-2 p-4 rounded bg-gray-800 border border-gray-700">
-      <div class="col-span-1 md:col-span-2">
-        <h3 class="text-lg font-semibold mb-2">Tuning Optionen:</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="stage1" class="option-check accent-red-600"><span>Stage 1 (59 €)</span></label>
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="dsg" class="option-check accent-red-600"><span>DSG Optimierung (79 €)</span></label>
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="dpf" class="option-check accent-red-600"><span>DPF off (+10 €)</span></label>
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="egr" class="option-check accent-red-600"><span>EGR off (+10 €)</span></label>
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="hardcut" class="option-check accent-red-600"><span>Hardcut Limiter (+10 €)</span></label>
-          <label class="flex items-center space-x-2"><input type="checkbox" name="optionen[]" value="popnbang" class="option-check accent-red-600"><span>Pop and Bang (+10 €)</span></label>
-        </div>
-        <p class="text-lg mt-4">Gesamtpreis: <span id="totalPrice" class="font-bold text-green-400">0 €</span></p>
-      </div>
-      <div class="col-span-1 md:col-span-2 text-center">
-        <button type="submit" class="mt-4 bg-[#e63946] hover:bg-[#b92b37] text-white font-bold py-4 px-10 rounded-full shadow-lg hover-scale transition">Jetzt hochladen</button>
-      </div>
-    </form>
+<!-- WhatsApp Upload Hinweis + Button + Formular -->
+<section class="bg-[#111] text-white py-10 text-center">
+  <h3 class="text-2xl font-bold mb-4">Direkt über WhatsApp senden</h3>
+  <p class="text-gray-300 mb-6">Fülle dein Fahrzeugformular aus und klicke unten auf den Button – deine Daten werden automatisch über WhatsApp übermittelt.</p>
+
+  <form id="whatsappForm" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+    <input type="text" id="name" placeholder="Dein Name" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="telefon" placeholder="Telefonnummer" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="marke" placeholder="Fahrzeugmarke" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="modell" placeholder="Modell" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="baujahr" placeholder="Baujahr" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="motor" placeholder="Motor" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="motorkennbuchstabe" placeholder="Motorcode" required class="p-4 rounded bg-gray-800 border border-gray-700">
+    <input type="text" id="optionen" placeholder="Optionen (z. B. Stage1, DSG, DPF)" class="p-4 rounded bg-gray-800 border border-gray-700 md:col-span-2">
+  </form>
+
+  <div class="mt-6">
+    <a id="whatsappLink" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all">Über WhatsApp senden</a>
   </div>
 </section>
 
 <script>
-  const checkboxes = document.querySelectorAll('.option-check');
-  const priceDisplay = document.getElementById('totalPrice');
-  const form = document.querySelector("form");
-  const confirmationBox = document.getElementById("confirmation");
+  const whatsappLink = document.getElementById("whatsappLink");
+  const formIds = ["name", "telefon", "marke", "modell", "baujahr", "motor", "motorkennbuchstabe", "optionen"];
 
-  const basePrices = {
-    stage1: 59,
-    dsg: 79,
-    dpf: 10,
-    egr: 10,
-    hardcut: 10,
-    popnbang: 10
-  };
-
-  function calculateTotal() {
-    let total = 0;
-    checkboxes.forEach(cb => {
-      if (cb.checked) {
-        total += basePrices[cb.value] || 0;
-      }
+  whatsappLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    const data = {};
+    formIds.forEach(id => {
+      const el = document.getElementById(id);
+      data[id] = el.value.trim();
     });
-    priceDisplay.textContent = `${total} €`;
-  }
 
-  function showConfirmation() {
-    confirmationBox.classList.add("active");
-    setTimeout(() => confirmationBox.classList.remove("active"), 6000);
-  }
+    const message = `Hallo! Ich möchte eine Tuning-Datei hochladen.\n\n` +
+      `👤 Name: ${data.name}\n📞 Tel: ${data.telefon}\n🚗 Marke: ${data.marke}\nModell: ${data.modell}\nBaujahr: ${data.baujahr}\nMotor: ${data.motor}\nMotorcode: ${data.motorkennbuchstabe}\n⚙️ Optionen: ${data.optionen}\n\nIch sende die Datei jetzt mit.`;
 
-  function closeConfirmation() {
-    confirmationBox.classList.remove("active");
-  }
-
-  form?.addEventListener("submit", () => {
-    setTimeout(() => showConfirmation(), 500);
+    const phone = "436642536012";
+    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
   });
-
-  checkboxes.forEach(cb => cb.addEventListener('change', calculateTotal));
-  window.addEventListener('DOMContentLoaded', calculateTotal);
 </script>
 
 </body>
