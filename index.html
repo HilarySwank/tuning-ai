@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
-<header class="bg-[#0b0b0b] text-white py-12 text-center">
-  <h1 class="text-5xl font-extrabold neon-text mb-4">Car Tuning – AI Powered & Tuning-Profis</h1>
-  <p class="text-xl text-gray-300">Maximale Leistung. Persönlicher Service. Jetzt direkt per WhatsApp.</p>
-</header>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Car Tuning AI – WhatsApp Upload</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Tuning – AI WhatsApp</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
@@ -20,13 +16,24 @@
       color: #e63946;
       text-shadow: 0 0 6px #e63946, 0 0 10px #e63946;
     }
-    input:hover, input:focus, input:active, button:hover {
-      box-shadow: 0 0 10px rgba(230,57,70,0.8);
-      outline: none;
-    }
   </style>
 </head>
 <body>
+<!-- Header mit Titel -->
+<header class="bg-[#0b0b0b] text-white py-12 text-center">
+  <h1 class="text-5xl font-extrabold neon-text mb-4">Car Tuning – AI Powered & Tuning-Profis</h1>
+  <p class="text-xl text-gray-300">Maximale Leistung. Persönlicher Service. Jetzt direkt per WhatsApp.</p>
+</header>
+
+<!-- Trust Section -->
+<section class="bg-[#0b0b0b] py-10 text-center">
+  <div class="flex justify-center items-center flex-wrap gap-10">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/SSL-logo.svg/512px-SSL-logo.svg.png" alt="SSL" class="h-12">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/GDPR_Logo.svg/512px-GDPR_Logo.svg.png" alt="DSGVO" class="h-12">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/TUV_SUD_Logo.svg/512px-TUV_SUD_Logo.svg.png" alt="TÜV" class="h-12">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/ISO_9001-Logo.svg/512px-ISO_9001-Logo.svg.png" alt="ISO9001" class="h-12">
+  </div>
+</section>
 
 <!-- Beschreibung Abschnitt -->
 <section class="bg-black text-white py-20 px-6 text-center">
@@ -47,7 +54,29 @@
     <input type="text" id="baujahr" placeholder="Baujahr" required class="p-4 rounded bg-gray-800 border border-gray-700">
     <input type="text" id="motor" placeholder="Motor" required class="p-4 rounded bg-gray-800 border border-gray-700">
     <input type="text" id="motorkennbuchstabe" placeholder="Motorcode" required class="p-4 rounded bg-gray-800 border border-gray-700">
-    <input type="text" id="optionen" placeholder="Optionen (z. B. Stage1, DSG, DPF)" class="p-4 rounded bg-gray-800 border border-gray-700 md:col-span-2">
+    <div class="md:col-span-2">
+      <h4 class="text-lg font-semibold mb-2">Tuning Optionen:</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="Stage 1"> <span>Stage 1</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="DSG Optimierung"> <span>DSG Optimierung</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="DPF off"> <span>DPF off</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="EGR off"> <span>EGR off</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="Hardcut Limiter"> <span>Hardcut Limiter</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="option-check accent-red-600" value="Pop and Bang"> <span>Pop and Bang</span>
+        </label>
+      </div>
+    </div>
   </form>
 
   <div class="mt-6">
@@ -57,7 +86,7 @@
 
 <script>
   const whatsappLink = document.getElementById("whatsappLink");
-  const formIds = ["name", "telefon", "marke", "modell", "baujahr", "motor", "motorkennbuchstabe", "optionen"];
+  const formIds = ["name", "telefon", "marke", "modell", "baujahr", "motor", "motorkennbuchstabe"];
 
   whatsappLink.addEventListener("click", function(e) {
     e.preventDefault();
@@ -67,8 +96,9 @@
       data[id] = el.value.trim();
     });
 
+    const selectedOptions = Array.from(document.querySelectorAll('.option-check:checked')).map(cb => cb.value).join(', ');
     const message = `Hallo! Ich möchte eine Tuning-Datei hochladen.\n\n` +
-      `👤 Name: ${data.name}\n📞 Tel: ${data.telefon}\n🚗 Marke: ${data.marke}\nModell: ${data.modell}\nBaujahr: ${data.baujahr}\nMotor: ${data.motor}\nMotorcode: ${data.motorkennbuchstabe}\n⚙️ Optionen: ${data.optionen}\n\nIch sende die Datei jetzt mit.`;
+      `👤 Name: ${data.name}\n📞 Tel: ${data.telefon}\n🚗 Marke: ${data.marke}\nModell: ${data.modell}\nBaujahr: ${data.baujahr}\nMotor: ${data.motor}\nMotorcode: ${data.motorkennbuchstabe}\n⚙️ Optionen: ${selectedOptions}\n\nIch sende die Datei jetzt mit.`;
 
     const phone = "436642536012";
     const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
